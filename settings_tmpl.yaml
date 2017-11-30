@@ -1,0 +1,19 @@
+cam:
+- auth_type: %Supports 'BASIC', 'DIGEST'
+  name: '%name'
+  password: '%password'
+  url: "%still picture url"
+  user: '%user'
+  format: '%saved file extension'
+
+snap_every: 10
+
+storage:
+  base: '.'
+  archive:
+    folder: 'archive'
+    format: '%Y-%m-%d'
+  snaps:
+    folder: 'snaps'
+    timeout: 20
+    unit: 'minute' %supports minute, seconds, hour, day

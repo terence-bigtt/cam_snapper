@@ -94,3 +94,7 @@ ENV/
 # Rope project settings
 .ropeproject
 
+/settings.yml
+.DS_Store
+.idea/
+src/.DS_Store
