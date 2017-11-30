@@ -10,11 +10,12 @@ general = GeneralConfig('../settings.yml')
 storage = general.storage
 snap_every = general.snap_every
 
-snapper = Snapper(general)
+snappers = [Snapper(cam_conf, general.storage) for cam_conf in general.cams]
 
-snap_task = ScheduledTask(snapper.snap, snap_every)
-archive_task = ScheduledTask(snapper.archive, snap_every, 1)
-tasks = [archive_task, snap_task]
+snap_tasks = [ScheduledTask(snapper.snap, snap_every) for snapper in snappers]
+archive_tasks = [ScheduledTask(snapper.archive, snap_every, 1) for snapper in snappers]
+tasks = archive_tasks + snap_tasks
+
 for t in tasks:
     scheduler.schedule(t)
 
